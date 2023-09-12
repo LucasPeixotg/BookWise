@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  database:
+    image: postgres:16rc1-bullseye
+    volumes:
+      - ./data.sql:/docker-entrypoint-initdb.d/data.sql
+    environment:
+      POSTGRES_USER: "admin"
+      POSTGRES_PASSWORD: "superpassword"
+    ports:
+      - "4455:5432"
