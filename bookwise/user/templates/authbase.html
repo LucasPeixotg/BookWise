@@ -1,3 +1,10 @@
-{% extends 'website/barebones.html' %} {% block body %}
-<h1>TESTE</h1>
-{% endblock %}
+{% extends 'barebones.html' %} 
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'styles/auth.css' %}" />
+{% endblock head %} 
+
+{% block body%}
+<div>{% block content %} {% endblock %}</div>
+{% endblock body %}

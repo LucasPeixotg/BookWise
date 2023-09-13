@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1>Book Wise</h1>
+<h1 class="mb-3">Book Wise</h1>
 <p>Your personal library management system</p>
-<a href="#"> Login </a> to create your library {% endblock %}
+<a href="{% url 'login' %}">Login</a> to create your library {% endblock %}
