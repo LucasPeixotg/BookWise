@@ -1,11 +1,12 @@
-version: "3.9"
 services:
-  database:
+  postgresdb:
     image: postgres:16rc1-bullseye
-    volumes:
-      - ./data.sql:/docker-entrypoint-initdb.d/data.sql
+    restart: always
     environment:
-      POSTGRES_USER: "admin"
-      POSTGRES_PASSWORD: "superpassword"
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: superpassword
+      POSTGRES_DB: bookwise
+    volumes:
+      - ./dbdata:/var/lib/postgresql/data
     ports:
       - "4455:5432"
