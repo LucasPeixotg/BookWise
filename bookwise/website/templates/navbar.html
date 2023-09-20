@@ -2,7 +2,7 @@
   class="navbar navbar-expand-lg bg-body-tertiary border-bottom border-body px-2"
 >
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">BookWise</a>
+    <a class="navbar-brand" href="{% url 'home' %}">BookWise</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -16,9 +16,11 @@
     </button>
     <div class="collapse navbar-collapse mx-3" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="#">Home</a>
-        </li>
+        {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{% url 'home_library' %}">My Libraries</a>
+          </li>
+        {% endif %}
         <li class="nav-item">
           <a class="nav-link" aria-current="page" href="#">Home</a>
         </li>

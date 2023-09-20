@@ -5,4 +5,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("website.urls")),
     path("auth/", include("user.urls")),
+    path("library/", include("library.urls")),
 ]

@@ -1,5 +1,42 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
 
-<h1 class="mb-3">Book Wise</h1>
-<p>Your personal library management system</p>
-<a href="{% url 'login' %}">Login</a> to create your library {% endblock %}
+{% block content %}
+
+{% if not user.is_authenticated %}
+    <h1 class="mb-3">Book Wise</h1>
+    <p>Your personal library management system</p>
+    <a href="{% url 'login' %}">Login</a> to create your library
+{% else %}
+    <h2 class="mb-5">Trending</h2>
+    <div class="d-flex">
+        <div class="card col-lg-3 col-md-4 col-12 me-5">
+            <img src="https://placehold.co/600x400" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Book Title</h5>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <a href="#" class="btn btn-primary">Check Book</a>
+            </div>
+        </div>
+        <div class="card col-lg-3 col-md-4 col-12 me-5">
+            <img src="https://placehold.co/600x400" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Book Title</h5>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <a href="#" class="btn btn-primary">Check Book</a>
+            </div>
+        </div>
+        <div class="card col-lg-3 col-md-4 col-12 me-5">
+            <img src="https://placehold.co/600x400" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Book Title</h5>
+              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
+                eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+              <a href="#" class="btn btn-primary">Check Book</a>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% endblock %}
