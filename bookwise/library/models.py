@@ -4,8 +4,7 @@ from django.utils import timezone
 
 class Library(models.Model):
     name = models.CharField(max_length=100)
-    admin = models.OneToOneField(User, on_delete=models.SET_NULL)
-    editors = models.ManyToManyField(User)
+    editor = models.OneToOneField(User, on_delete=models.DO_NOTHING)
     
     date_created = models.DateTimeField(editable=False)
     
