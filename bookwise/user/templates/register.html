@@ -1,0 +1,26 @@
+{% extends 'authbase.html' %}
+
+{% block content %}
+
+<h1 class="mb-5">Register</h1>
+<form action="" method="post">
+    {% csrf_token %}
+
+    {% for field in form %}
+    <div class="mb-3">
+            {% if field.errors %}
+                <p class="text-danger">
+                    {{ field.errors }}
+                </p>
+            {% endif %}
+            <label class="form-label">{{ field.label }}</label>
+            {{ field }}
+        </div>
+    {% endfor %}
+    <div class="d-flex align-items-center justify-content-between mt-5">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <label class="form-label">Already have an account? Login <a href="{% url 'login' %}">HERE</a></label>
+    </div>
+</form>
+
+{% endblock content %}
