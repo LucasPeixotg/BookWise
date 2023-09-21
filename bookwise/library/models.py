@@ -1,11 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from book.models import Book
 
 class Library(models.Model):
     name = models.CharField(max_length=100)
-    editor = models.OneToOneField(User, on_delete=models.DO_NOTHING)
-    
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    books = models.ManyToManyField(Book)
+ 
     date_created = models.DateTimeField(editable=False)
     
     def save(self, *args, **kwargs):
