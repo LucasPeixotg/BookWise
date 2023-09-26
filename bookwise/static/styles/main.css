@@ -3,3 +3,7 @@
 body {
     font-family: 'Poppins', sans-serif;
 }
+
+.table-transparent td, .table-transparent th {
+    background-color: #0000;
+}

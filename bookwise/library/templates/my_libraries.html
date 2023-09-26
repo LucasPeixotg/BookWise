@@ -2,22 +2,45 @@
 
 {% block content %}
 
-<h1 class="mb-4">My Libraries</h1>
-<div class="row row-cols-1 row-cols-md-3 row-cols-lg-4  justify-content-between">
-    {% if libraries %}
-        {% for library in libraries %}
-            <a href="{% url 'home_library' id=library.id %}" class="card text-decoration-none col me-2 mb-5">
-                <img src="https://placehold.co/600x400" class="card-img-top" alt="">
-                <div class="card-body">
-                    <h5 class="card-title">{{ library.name }}</h5>
-                    <p class="card-text">Book Count: 100</p>
-                </div>
-            </a>
-        {% endfor %}
-    {% else %}
-        <p>How empty :(</p>
-
-    {% endif %}
-
+<div class="mb-4 d-flex align-items-center justify-content-between">
+    <h1>My Libraries</h1>
+    <a href="{% url 'add_library' %}">
+        <button class="btn btn-primary">
+            New Library
+        </button>
+    </a>
 </div>
+
+{% if libraries %}
+    <table class="table table-hover table-transparent">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Book Count</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for library in libraries %}
+            <tr>
+                <th scope="row" >
+                    <a href="{% url 'home_library' id=library.id %}">
+                        <button class="btn btn-sm btn-primary">></button>
+                    </a>
+                </th>
+                <td>{{ library.name }}</td>
+                <td>100</td>
+                <td>TESTE</td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+{% else %}
+    <p>How empty :(</p>
+
+{% endif %}
+
 {% endblock content %}
