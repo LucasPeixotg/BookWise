@@ -7,11 +7,21 @@
 <form method="POST">
     {% csrf_token %}
 
+    {% for field in form %}
     <div class="mb-3">
-        <label class="form-label">Name</label>
-        <input type="text" class="form-control" name="name" required />
+            {% if field.errors %}
+                <p class="text-danger">
+                    {{ field.errors }}
+                </p>
+            {% endif %}
+            <label class="form-label">{{ field.label }}</label>
+            {{ field }}
+        </div>
+    {% endfor %}
+    <div class="d-flex align-items-center justify-content-between mt-5">
+        <button type="submit" class="btn btn-primary">Submit</button>
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+
 </form>
 
 {% endblock content %}
