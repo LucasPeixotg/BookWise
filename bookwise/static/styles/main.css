@@ -7,3 +7,7 @@ body {
 .table-transparent td, .table-transparent th {
     background-color: #0000;
 }
+
+.table-rounded td:last-child {
+    border-radius: 0 50px 50px 0;
+}

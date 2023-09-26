@@ -2,45 +2,55 @@
 
 {% block content %}
 
-<div class="mb-4 d-flex align-items-center justify-content-between">
-    <h1>My Libraries</h1>
-    <a href="{% url 'add_library' %}">
-        <button class="btn btn-primary">
-            New Library
-        </button>
-    </a>
+<div class="border p-4 rounded-4">
+
+    <div class="mb-4 d-flex align-items-center justify-content-between">
+        <h1>My Libraries</h1>
+        <a href="{% url 'add_library' %}">
+            <button class="btn btn-primary">
+                New Library
+            </button>
+        </a>
+    </div>
+    
+    {% if libraries %}
+        <table class="table table-hover table-transparent table-borderless table-rounded">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Book Count</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+    
+            {% for library in libraries %}
+                <tr>
+                    <th>
+                        <a href="{% url 'home_library' id=library.id %}">
+                            <button class="btn btn-sm btn-primary">></button>
+                        </a>
+                    </th>
+                    <td class="w-50">{{ library.name }}</td>
+                    <td class="w-25">100</td>
+                    <td>
+                        <a href="" class="text-decoration-none">
+                            <button class="btn btn-sm btn-danger">del</button>
+                        </a>
+                        <a href="" class="text-decoration-none">
+                            <button class="btn btn-sm btn-secondary">edit</button>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+    
+            </tbody>
+        </table>
+    {% else %}
+        <p>How empty :(</p>
+    
+    {% endif %}
 </div>
-
-{% if libraries %}
-    <table class="table table-hover table-transparent">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Book Count</th>
-                <th scope="col">Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-
-        {% for library in libraries %}
-            <tr>
-                <th scope="row" >
-                    <a href="{% url 'home_library' id=library.id %}">
-                        <button class="btn btn-sm btn-primary">></button>
-                    </a>
-                </th>
-                <td>{{ library.name }}</td>
-                <td>100</td>
-                <td>TESTE</td>
-            </tr>
-        {% endfor %}
-
-        </tbody>
-    </table>
-{% else %}
-    <p>How empty :(</p>
-
-{% endif %}
 
 {% endblock content %}
