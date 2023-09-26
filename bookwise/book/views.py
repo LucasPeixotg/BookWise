@@ -1,3 +1,7 @@
 from django.shortcuts import render
 
-# Create your views here.
+def add_book(request):
+    pass
+
+def detail_book(request, id):
+    pass
