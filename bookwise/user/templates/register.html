@@ -2,8 +2,8 @@
 
 {% block content %}
 
-<h1 class="mb-5">Register</h1>
-<form action="" method="post">
+<form class="border p-4 rounded-4" method="POST">
+    <h1 class="mb-5">Register</h1>
     {% csrf_token %}
 
     {% for field in form %}
